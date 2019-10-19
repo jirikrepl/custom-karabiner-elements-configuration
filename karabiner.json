@@ -8,18 +8,23 @@
         {
             "complex_modifications": {
                 "parameters": {
+                    "basic.simultaneous_threshold_milliseconds": 50,
                     "basic.to_delayed_action_delay_milliseconds": 500,
                     "basic.to_if_alone_timeout_milliseconds": 1000,
-                    "basic.to_if_held_down_threshold_milliseconds": 500
+                    "basic.to_if_held_down_threshold_milliseconds": 500,
+                    "mouse_motion_to_scroll.speed": 100
                 },
                 "rules": [
                     {
-                        "description": "Home key to the beginning of the line (Control + a)",
+                        "description": "Change Command+Backward-Delete and Option+Backward-Delete",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "home",
+                                    "key_code": "delete_or_backspace",
                                     "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ],
                                         "optional": [
                                             "any"
                                         ]
@@ -27,9 +32,9 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "a",
+                                        "key_code": "delete_or_backspace",
                                         "modifiers": [
-                                            "left_control"
+                                            "option"
                                         ]
                                     }
                                 ],
@@ -38,12 +43,15 @@
                         ]
                     },
                     {
-                        "description": "End key to the end of the line (Control + e)",
+                        "description": "Change Option+Backward-Delete to Command+Backward-Delete",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "end",
+                                    "key_code": "delete_or_backspace",
                                     "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ],
                                         "optional": [
                                             "any"
                                         ]
@@ -51,9 +59,9 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "e",
+                                        "key_code": "delete_or_backspace",
                                         "modifiers": [
-                                            "left_control"
+                                            "command"
                                         ]
                                     }
                                 ],
@@ -243,15 +251,12 @@
                         ]
                     },
                     {
-                        "description": "Change Command+Backward-Delete and Option+Backward-Delete",
+                        "description": "Home key to the beginning of the line (Control + a)",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "delete_or_backspace",
+                                    "key_code": "home",
                                     "modifiers": {
-                                        "mandatory": [
-                                            "command"
-                                        ],
                                         "optional": [
                                             "any"
                                         ]
@@ -259,9 +264,9 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "delete_or_backspace",
+                                        "key_code": "a",
                                         "modifiers": [
-                                            "option"
+                                            "left_control"
                                         ]
                                     }
                                 ],
@@ -270,11 +275,11 @@
                         ]
                     },
                     {
-                        "description": "Delete in finder, mapped to cutom keyboard shortcut  (my added rule)",
+                        "description": "End key to the end of the line (Control + e)",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "delete_forward",
+                                    "key_code": "end",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -283,46 +288,9 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "d",
+                                        "key_code": "e",
                                         "modifiers": [
-                                            "control",
-                                            "command",
-                                            "option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic",
-                                "conditions": [
-                                  {
-                                    "type": "frontmost_application_if",
-                                    "bundle_identifiers": [
-                                      "^com.apple.finder"
-                                    ]
-                                  }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change Command+forward-Delete and Option+forward-Delete (my adde)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "delete_forward",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "command"
-                                        ],
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_forward",
-                                        "modifiers": [
-                                            "option"
+                                            "left_control"
                                         ]
                                     }
                                 ],
@@ -383,10 +351,91 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Change Option_forward-Delete to Command+forward_Delete (my rule)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "delete_forward",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "command"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_forward",
+                                        "modifiers": [
+                                            "option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change Command+forward_Delete to Option+forward_Delete (my rule)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "delete_forward",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_forward",
+                                        "modifiers": [
+                                            "command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
-            "devices": [],
+            "devices": [
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 34304,
+                        "vendor_id": 1452
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 632,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                }
+            ],
             "fn_function_keys": [
                 {
                     "from": {
@@ -486,11 +535,14 @@
                 }
             ],
             "name": "Default profile",
+            "parameters": {
+                "delay_milliseconds_before_open_device": 1000
+            },
             "selected": true,
             "simple_modifications": [],
             "virtual_hid_keyboard": {
-                "caps_lock_delay_milliseconds": 0,
-                "keyboard_type": ""
+                "country_code": 0,
+                "mouse_key_xy_scale": 100
             }
         }
     ]
