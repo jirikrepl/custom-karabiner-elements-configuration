@@ -1,5 +1,9 @@
 # custom-karabiner-elements-configuration
-https://github.com/tekezo/Karabiner-Elements 
+
+## Usage
+copy/paste karabiner.json to `~/.config/karabiner/` folder.
+
+If Karabiner is opened, settings is reloaded automatically.
 
 ## configuration documentation and examples
 https://github.com/pqrs-org/KE-complex_modifications/blob/master/docs/json/finder.json
